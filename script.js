@@ -8,7 +8,7 @@ document.cookie.split("; ").forEach(cookie => {
 
     if (name === "fontsize") {
         size.value = parseInt(value);
-        document.documentElement.style.setProperty("--fontsize", value);
+        document.documentElement.style.setProperty("--fontsize", value+"px");
     }
 
     if (name === "fontcolor") {
@@ -19,8 +19,8 @@ document.cookie.split("; ").forEach(cookie => {
 
 // Save preferences
 save.onclick = () => {
-    document.cookie = `fontsize=${size.value}px`;
-    document.cookie = `fontcolor=${color.value}`;
+    document.cookie = `fontsize=${size.value};max-age=31536000; path=/`;
+    document.cookie = `fontcolor=${color.value};max-age=31536000; path=/`;
 
     document.documentElement.style.setProperty("--fontsize", size.value + "px");
     document.documentElement.style.setProperty("--fontcolor", color.value);
